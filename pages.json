@@ -62,6 +62,15 @@
                     "navigationBarTitleText": "列表",
                     "enablePullDownRefresh": false
                 }
-        }]
+        }    ,{
+                    "path" : "goods_list/goods_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
     }]
 }

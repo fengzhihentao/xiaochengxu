@@ -1,19 +1,17 @@
 <template>
 	<view>
-		轮播图
+		列表
 	</view>
 </template>
 
 <script>
 	export default {
-		data() {
+	data() {
 			return {
-				
-			};
+			}
 		}
 	}
 </script>
-
 <style lang="scss">
 
 </style>

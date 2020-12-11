@@ -27,7 +27,6 @@
             </navigator>
           </view>
         </view>
-        <!-- 1 -->
       </view>
     </view>
   </view>

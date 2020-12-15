@@ -1,5 +1,8 @@
 <template>
   <view>
+    <view class="search-box">
+      <my-search :bgColor="'#f00'" :radius="18" @click="goToSearch"></my-search>
+    </view>
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="swiper-box">
       <swiper-item class="list" v-for="(item, i) in swiperList" :key="i">
@@ -79,6 +82,11 @@ export default {
         url: '../cate/cate'
       });
     },
+    goToSearch(){
+      uni.navigateTo({
+        url:"../../subpkg/search/search"
+      })
+    },
     // 获取楼层列表
     async getFloorList() {
       const { data: res } = await uni.$http.get('/api/public/v1/home/floordata');
@@ -96,12 +104,20 @@ export default {
 </script>
 
 <style lang="scss">
+  .search-box{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
 .swiper-box {
   height: 330rpx;
   width: 100%;
-  image {
+  .swiper-item {
     width: 100%;
     height: 100%;
+    image{
+      width: 100%;
+    }
   }
 }
 .nav-list {

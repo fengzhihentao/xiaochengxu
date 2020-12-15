@@ -1,11 +1,19 @@
 <template>
 	<view>
-		轮播图
+		商品详情页
 	</view>
 </template>
 
 <script>
 	export default {
+    props:{
+      _id:{
+        type:String,
+      },
+      goods_id:{
+        type:Number,
+      }
+    },
 		data() {
 			return {
 				

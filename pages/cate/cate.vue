@@ -1,5 +1,6 @@
 <template>
   <view>
+    <my-search :bgColor="'#f00'" :radius="18" @click="goToSearch"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧滑动区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height:wh+'px'}">
@@ -33,7 +34,7 @@
        // 获取当前系统的信息
         const sysInfo = uni.getSystemInfoSync()
         // 为 wh 窗口可用高度动态赋值
-        this.wh = sysInfo.windowHeight
+        this.wh = sysInfo.windowHeight - 50
         this.getCateList()
     },
 		data() {
@@ -48,8 +49,8 @@
         cateLevel2:[],
         // 第三列数据
         cateLevel3:[],
-        
-        scrollTop:0
+        scrollTop:0,
+        bgColor : "skyblue"
 			};
 		},
     methods:{
@@ -61,22 +62,27 @@
       // 为二级分类赋值
         this.cateLevel2 = res.message[0].children
         // 为三级分类赋值
-        this.cateLevel3 = res.message[0].children[0].children
+        this.cateLevel3 = res.message[0].children[0].children || []
      },
      // 点击切换样式
      activeChanged(i){
        this.active = i
       // 为二级分类列表重新赋值
       this.cateLevel2 = this.cateList[i].children
-      this.cateLevel3 = this.cateList[i].children[i].children
+      this.cateLevel3 = this.cateList[i].children[i] ? this.cateList[i].children[i].children  : [],
+      console.log(this.cateLevel2)
       this.scrollTop = this.scrollTop === "0" ? "1" : "0"
      },
      goToGoods_list(cid){
        wx.navigateTo({
          url:"/subpkg/goods_list/goods_list?cid="+cid
        })
-       console.log(cid)
-     }
+     },
+     goToSearch(){
+       uni.navigateTo({
+         url:"../../subpkg/search/search"
+       })
+     },
     },
 	}
 </script>
